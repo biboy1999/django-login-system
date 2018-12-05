@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}index{% endblock %}
+
+{% block content %}
+    <h2>現在時間: {{ dt }}</h2>
+    <p>Hello django :D</p>
+
+    {% if status == 'login' %}
+       {{ message }}
+    {% endif %}
+
+{% endblock %}

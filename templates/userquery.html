@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Userquery{% endblock %}
+
+{% block content %}
+
+<table border="1">
+    <tr>
+        <th>user</th>
+        <th>sex</th>
+        <th>detail</th>
+    </tr>
+
+    {% for item in userlist %}
+    <tr>
+        <th>{{item.Username}}</th>
+        <th>{{item.Sex}}</th>
+        <th>{{item.Detail}}</th>
+    </tr>    
+    {% endfor %}
+
+</table>
+
+{% endblock %}

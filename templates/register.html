@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <form action="" method="POST" name="formRegister">
+        {% csrf_token %}
+        帳號 : <input type="text" name="username" required/>
+        <br/>
+        <br/>
+        密碼 : <input type="password" name="password" id="password" required/>
+        <br/>
+        <br/>
+        確認密碼 : <input type="password" name="confirmpassword" id="confirm_password" required/>
+        <br/>
+        <br/>
+        性別 :
+        <select name="sex" required>
+            <option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+        <br/>
+        <br/>
+        詳細資訊 : <input type="text" name="detail" required/>
+        <br/>
+        <br/>
+        <button type="submit">送出</button>
+
+        {% if is_posted %}
+            接收資訊 <br/>
+            帳號 : {{ username }} <br/>
+            性別 : {{ sex }} <br/>
+            詳細資訊 : {{ detail }}
+        {% else %}
+            <br/>
+            no info
+        {% endif %}
+
+    </form>
+
+    <script>
+        let password = document.getElementById("password")
+        let confirm_password = document.getElementById("confirm_password");
+
+        function validatePassword() {
+            if (password.value !== confirm_password.value) {
+                confirm_password.setCustomValidity("密碼不相同");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
+
+{% endblock %}
